@@ -1,6 +1,7 @@
 import Foundation
 
-struct Day1 {
+// Trebuchet?!
+struct Day01 {
     
     func part1() -> Int {
         return readFile(fileName: "day_01")
@@ -42,22 +43,22 @@ struct Day1 {
         "eight": "8",
         "nine": "9"
     ]
-
+    
     private func getWordValue(input: String) -> Int {
         var firstDigit = ""
         var lastDigit = ""
-       
+        
         // Take 1 - Easier
-//        input.forEach { c in
-//            if c.isNumber {
-//                if firstDigit.isEmpty {
-//                    firstDigit = String(c)
-//                    lastDigit = String(c)
-//                } else {
-//                    lastDigit = String(c)
-//                }
-//            }
-//        }
+        //        input.forEach { c in
+        //            if c.isNumber {
+        //                if firstDigit.isEmpty {
+        //                    firstDigit = String(c)
+        //                    lastDigit = String(c)
+        //                } else {
+        //                    lastDigit = String(c)
+        //                }
+        //            }
+        //        }
         
         // Take 2 - performant
         
@@ -81,6 +82,6 @@ struct Day1 {
         
         return Int(firstDigit + lastDigit) ?? 0
     }
-   
+    
 }
 
