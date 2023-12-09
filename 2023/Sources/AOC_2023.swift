@@ -6,6 +6,6 @@ import Figlet
 @main
 struct FigletTool {
   static func main() {
-      print(Day02().part2())
+      print(Day03().part1())
   }
 }
