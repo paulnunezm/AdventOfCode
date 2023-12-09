@@ -1,7 +1,7 @@
 
 struct Day03 {
     
-    func part1() -> String {
+    func part1() -> Int {
        let inputArray = readFile(fileName: "day_03")
                 .map { Array(String($0))}
 
@@ -10,9 +10,42 @@ struct Day03 {
                 .reduce(0, +)
     }
 
+    func part2() -> Int {
+       let inputArray = readFile(fileName: "day_03")
+                .map { Array(String($0))}
+
+        return getAllGears(inputArray: inputArray)
+    }
+
     struct Position {
         var row: Int
         var column: Int
+    }
+
+    func getAllGears(inputArray: [[String.Element]]) -> Int {
+        var gearsParcialPositions : [[Position]] = []
+        let columnsLength = inputArray[0].count - 1 
+        let rowsLength = inputArray.count - 1
+
+        for row in stride(from: 0, through: rowsLength, by: 1) {
+            for column in stride(from: 0, through: columnsLength, by: 1) {
+                let currentValue = inputArray[row][column]
+                if currentValue == "*" {
+                    let parcialAdjacentNumbers = getAdjacentPositionsForElement(for: Position(row: row, column: column), array: inputArray)
+                    if parcialAdjacentNumbers.count == 2 {
+                        gearsParcialPositions.append(parcialAdjacentNumbers)
+                    }
+                }
+            }
+        }
+
+        return gearsParcialPositions.map {  // -> [[Position]]
+                $0.map { // -> [Position]
+                    getFullNumberFromParcialPosition(position: $0, input: inputArray) 
+                } // ->  [Int]
+                .reduce(1, *)  // <- Int
+            } // -> [Int]
+            .reduce(0, +) // <- Int
     }
 
     func getAdjacentPositionsForArray(inputArray: [[String.Element]]) -> [Position] {
