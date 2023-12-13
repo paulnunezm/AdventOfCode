@@ -86,20 +86,20 @@ struct Day04 {
     }
 
     func getScratchCards(_ input: [String]) -> [Scratchcard] {
-        var scratchards : [Scratchcard] = []
+        var scratchcards : [Scratchcard] = []
         for (index, line) in input.enumerated() {
             let scratchNumberGameNumbers = line.split(separator: ":")
             let gameNumbers =  scratchNumberGameNumbers[1].split(separator: "|")
 
-            let scratchard = Scratchcard(
+            let scratchcard = Scratchcard(
                 gameNumber: index + 1,
                 ownedNumbers:  convertNumberStringToIntArray(gameNumbers[1]),
                 winningNumbers: convertNumberStringToIntArray(gameNumbers[0])
             )
 
-            scratchards.append(scratchard)
+            scratchcards.append(scratchcard)
         }
-        return scratchards
+        return scratchcards
     }
 
     func convertNumberStringToIntArray(_ input: String.SubSequence) -> [Int] {
