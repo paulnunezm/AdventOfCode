@@ -8,7 +8,7 @@
 import Foundation
 
 
-func readFile(fileName: String) -> [Substring] {
+func readFile(fileName: String,_ separator: String = "") -> [Substring] {
     
    let inputUrl = Bundle.module.url(
     forResource: fileName,
@@ -22,6 +22,7 @@ func readFile(fileName: String) -> [Substring] {
        fatalError("Couldn't find file \(fileName).txt' in the 'Resources' directory.")
      }
 
+  
     let nData = data.split(separator: "\n")
     
     return nData
