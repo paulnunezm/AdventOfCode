@@ -7,7 +7,7 @@ import Foundation
 struct FigletTool {
   static func main() {
     let startTime = DispatchTime.now()
-    let result = Day05().part1()
+    let result = Day06().part2()
     let endTime = DispatchTime.now()
 
     print("=================")
